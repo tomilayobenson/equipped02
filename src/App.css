@@ -1,39 +1,30 @@
-.App {
-  text-align: center;
+body {
+  font-family: Lora, serif;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-family: Ubuntu, sans-serif;
+}
+/* Start of jumbotron styling */
+.jumbotron {
+  min-height: 90vh;
+  background-image: url("./data/assets/img/joyful-lady.jpg");
+  background-size: cover;
+  background-repeat: repeat-x;
+  display:flex;
+  align-content:center;
+  justify-items:center;
+  align-items:center;
+}
+.form-rad {
+  border-radius: 1rem;
+}
+.btn-no {
+  border: none;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
+@media screen and (max-width: 900px) {
+  .jumbotron {
+      min-height: 50vh;
   }
 }
-
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-}
-
-.App-link {
-  color: rgb(112, 76, 182);
-}
-
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
+/* End of jumbotron styling */
