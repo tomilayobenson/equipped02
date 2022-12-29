@@ -18,9 +18,9 @@ h1,h2,h3,h4,h5,h6 {
 .form-rad {
   border-radius: 1rem;
 }
-.btn-no {
+/* .btn-no {
   border: none;
-}
+} */
 
 @media screen and (max-width: 900px) {
   .jumbotron {
@@ -28,3 +28,54 @@ h1,h2,h3,h4,h5,h6 {
   }
 }
 /* End of jumbotron styling */
+
+/* start of how it works */
+.works-p1 {
+  font-size: 3rem;
+  width: 60%;
+  background-color: #fbb03a;
+}
+.works-p2 {
+  font-size: 3rem;
+  width: 60%;
+  background-color: #ff6d2c;
+}
+.works-p3 {
+  font-size: 3rem;
+  width: 60%;
+  background-color:#e7da2e;
+}
+.triangle-right1 {
+width: 0;
+height: 0;
+border-top: 2.5rem solid transparent;
+border-left: 5rem solid #fbb03a;
+border-bottom: 2.5rem solid transparent;
+}
+.tx-orange {
+  color:#fbb03a;
+}
+.tx-pink {
+  color:#ff6d2c;
+}
+.tx-lemon {
+  color:#e7da2e;
+}
+.triangle-right2 {
+width: 0;
+height: 0;
+border-top: 2.5rem solid transparent;
+border-left: 5rem solid #ff6d2c;
+border-bottom: 2.5rem solid transparent;
+}
+.triangle-right3 {
+width: 0;
+height: 0;
+border-top: 2.5rem solid transparent;
+border-left: 5rem solid #e7da2e;
+border-bottom: 2.5rem solid transparent;
+}
+.btn-grad {
+  background-image: linear-gradient(to right, #ff6d2c, #9340ff);
+}
+/* end of how it works */
