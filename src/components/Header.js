@@ -2,10 +2,7 @@ import { useState } from "react";
 import { Navbar, NavbarBrand, Collapse, NavbarToggler, NavItem, Nav } from "reactstrap";
 import { NavLink } from "react-router-dom";
 import UserLoginForm from "../components/login/UserLoginForm";
-import { logDOM } from "@testing-library/react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-
+// import { logDOM } from "@testing-library/react";
 
 
 const Header = () => {
@@ -30,7 +27,7 @@ const [menuOpen ,setMenuOpen]  = useState(false)
               </NavItem>
               <NavItem>
               {/* Links to about and sites shoudl change to purchase links? */}
-                <NavLink className='nav-link' to='/sites' >
+                <NavLink className='nav-link' to='/purchase-listings' >
                 <i className='fa fa-list fa-lg' />????
                 </NavLink>
               </NavItem>
