@@ -14,6 +14,7 @@ import { validateUserLoginForm } from '../../utils/validateUserLoginForm';
 
 
 const UserLoginForm = () => {
+
     const [loginModalOpen, setLoginModalOpen] = useState(false)
     const currentUser = useSelector(selectCurrentUser)
     const dispatch = useDispatch()
@@ -101,5 +102,3 @@ const UserLoginForm = () => {
 }
 
 export default UserLoginForm;
-
-
