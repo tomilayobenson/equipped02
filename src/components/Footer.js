@@ -18,7 +18,7 @@ const Footer = () => {
                             <li>
                                 <Link to='/sites'>?????</Link>
                             </li>
-                            {/* Links to about and sites shoudl change to purchase links? */}
+                             {/* Links to about and sites shoudl change to purchase links? */}  
                             <li>
                                 <Link to='/howitworks'>How It Works</Link>
                             </li>
