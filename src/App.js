@@ -6,11 +6,15 @@ import PostAnItem from "./pages/PostAnItem";
 import PurchaseListings from "./pages/PurchaseListings";
 import RentalListings from "./pages/RentalListings";
 import ProductDetails from "./pages/ProductDetails";
+import Header from './components/Header';
+import Footer from './components/Footer';
 import './App.css';
 
 function App() {
   return (
     // <div className="App">
+    <>
+      <Header />
       <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='post-an-item' element={<PostAnItem />} />
@@ -22,6 +26,8 @@ function App() {
                     element={<ProductDetails />}
                 />
       </Routes>
+      <Footer />
+    </>   
       
     // </div>
   );
