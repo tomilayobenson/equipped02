@@ -1,6 +1,6 @@
 import { useState } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { setCurrentUser, selectCurrentUser } from './userSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCurrentUser, selectCurrentUser } from './userSlice';
 import {
     Modal,
     ModalHeader,

@@ -9,8 +9,17 @@ import ProductDetails from "./pages/ProductDetails";
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './App.css';
+import { useDispatch } from 'react-redux';
+import { fetchProducts } from './components/Products/productsSlice';
+import { useEffect } from 'react';
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect (() => { 
+    dispatch(fetchProducts());
+  },
+  [dispatch]
+  )
   return (
     // <div className="App">
     <>
