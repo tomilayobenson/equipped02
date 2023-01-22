@@ -6,28 +6,28 @@ const Footer = () => {
         <footer className='site-footer'>
             <Container>
                 <Row>
-                    <Col xs={{ size: 4, offset: 1 }} sm='2'>
+                    <Col xs={{ size: 4, offset: 1 }} sm='2' style={{ color: '#fff' }}>
                         <h5>Links</h5>
                         <ul className='list-unstyled'>
                             <li>
-                                <Link to='/'>Home</Link>
+                                <Link to='/' style={{ color: '#fff' }}>Home</Link>
                             </li>
                             <li>
-                                <Link to='/about'>????</Link>
+                                <Link to='/' style={{ color: '#fff' }}>Purchase/Rent??</Link>
                             </li>
                             <li>
-                                <Link to='/sites'>?????</Link>
+                                <Link to='/sites' style={{ color: '#fff' }}>?????</Link>
                             </li>
-                             {/* Links to about and sites shoudl change to purchase links? */}  
+                            {/* Links to about and sites shoudl change to purchase links? */}
                             <li>
-                                <Link to='/howitworks'>How It Works</Link>
+                                <Link to='/howitworks' style={{ color: '#fff' }}>How It Works</Link>
                             </li>
                         </ul>
                     </Col>
-                    <Col xs='6' sm='3' className='text-center'>
+                    <Col xs='6' sm='3' className='text-center' style={{ color: '#fff' }}>
                         <h5>Social</h5>
                         <a
-                            className='btn btn-social-icon btn-instagram'
+                                                    className='btn btn-social-icon btn-instagram'
                             href='http://instagram.com/'
                         >
                             <i className='fa fa-instagram' />
@@ -36,8 +36,8 @@ const Footer = () => {
                             className='btn btn-social-icon btn-facebook'
                             href='http://www.facebook.com/'
                         >
-                            <i className='fa fa-facebook' />
-                        </a>{' '}
+                             <i className='fa fa-facebook'/>
+                        </a>
                         <a
                             className='btn btn-social-icon btn-twitter'
                             href='http://twitter.com/'
@@ -53,19 +53,21 @@ const Footer = () => {
                     </Col>
                     <Col sm='4' className='text-center'>
                         <a
+                            style={{ color: '#fff' }}
                             role='button'
                             className='btn btn-link'
                             href='tel:+15555551234'
                         >
-                            <i className='fa fa-phone' /> 1-555-555-1234
+                            <i className='fa fa-phone' style={{ color: '#fff' }} /> (555)555-1515
                         </a>
                         <br />
                         <a
+                            style={{ color: '#fff' }}
                             role='button'
                             className='btn btn-link'
                             href='mailto:notreal@notreal.co'
                         >
-                            <i className='fa fa-envelope-o' /> bsp@equipped.co
+                            <i className='fa fa-envelope-o' style={{ color: '#fff' }} /> epd@equipped.com
                         </a>
                     </Col>
                 </Row>

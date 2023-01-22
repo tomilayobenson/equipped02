@@ -1,6 +1,6 @@
 import { useState } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { setCurrentUser, selectCurrentUser } from './userSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCurrentUser, selectCurrentUser } from './userSlice';
 import {
     Modal,
     ModalHeader,
@@ -10,7 +10,7 @@ import {
     Button
 } from 'reactstrap';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import { validateUserLoginForm } from '../../utils/validateUserLoginForm';
+import { validateUserLoginForm } from '../utils/validateUserLoginForm';
 
 
 const UserLoginForm = () => {
@@ -32,8 +32,9 @@ const UserLoginForm = () => {
     return (
         <>
             <span className='navbar-text ml-auto'>
-                {currentUser ? (
+                { currentUser? (
                     <div style={{ width: '4rem', height: '4rem' }}>
+
                     </div>
                 ) : (
                     <Button
@@ -59,7 +60,7 @@ const UserLoginForm = () => {
                             }}
 
                             onSubmit={handleLogin}
-                            validate={validateUserLoginForm}
+                             validate={validateUserLoginForm}
 
                         >
                             <Form>

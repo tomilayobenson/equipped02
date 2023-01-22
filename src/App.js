@@ -9,6 +9,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './App.css';
+// import { useDispatch } from 'react-redux';
 
 function App() {
   return (
