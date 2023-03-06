@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Navbar, NavbarBrand, Collapse, NavbarToggler, NavItem, Nav } from "reactstrap";
 import { NavLink } from "react-router-dom";
-import UserLoginForm from "../components/login/UserLoginForm";
+
 // import { logDOM } from "@testing-library/react";
 
 
@@ -13,7 +13,7 @@ const [menuOpen ,setMenuOpen]  = useState(false)
         {/* styling for navbar?? */}
       <Navbar dark color='primary' background-color='#fbb03a' sticky='top' expand='md'>
         <NavbarBrand className="ms-5" href='/'>
-          <img src={'eq logo.png'} alt="equipped -logo" className="float-start"/>
+          {/* <img src={'eq logo.png'} alt="equipped -logo" className="float-start"/> */}
            <h1 className="mt-1">Get Equipped</h1>
     
         </NavbarBrand>
@@ -28,22 +28,22 @@ const [menuOpen ,setMenuOpen]  = useState(false)
               <NavItem>
               {/* Links to about and sites shoudl change to purchase links? */}
                 <NavLink className='nav-link' to='/purchase-listings' >
-                <i className='fa fa-list fa-lg' />????
+                <i className='fa fa-list fa-lg' />Products
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink className='nav-link' to='/about' >
-                <i className='fa fa-info fa-lg' />  About
+                <NavLink className='nav-link' to='/post-an-item' >
+                <i className='fa fa-pencil-square-o fa-lg' />  Post an Item
                 </NavLink>
               </NavItem>
-              <NavItem>
+              {/* <NavItem>
                 <NavLink className='nav-link' to='/' >
                 <i className='fa fa-address-card  fa-lg' />How It Works
                 </NavLink>
-              </NavItem>
+              </NavItem> */}
             </Nav>
           </Collapse>
-              <UserLoginForm />
+              
       </Navbar>
     </div>
   );
