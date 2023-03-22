@@ -16,6 +16,29 @@ export const fetchProducts = createAsyncThunk(
 export const postProduct = createAsyncThunk(
     'products/postProduct',
     async (product, {dispatch}) => {
+        const bearer = 'Bearer ' + localStorage.getItem('token');
+        var formdata = new FormData();
+        formdata.append("title", product.postingTitle)
+                    formdata.append("category", product.selectCategory)
+                    // desc: '',
+                    // inputAddress: '',
+                    // inputAddress2: '',
+                    // inputCity: '',
+                    // inputState: 'Choose...',
+                    // inputZip: '',
+                    // pricingSwitches: ['For Rent'],
+                    // enterDay: '',
+                    // enterWeek: '',
+                    // enterMonth: '',
+                    // enterQuantity: '',
+                    // enterValue: '',
+                    // enterMin: '',
+                    // itemPrice: '',
+                    // itemQuantity: '',
+                    // productPhotos: null
+                    product.productPhotos.forEach((photo,idx) => {
+                       formdata.append("productPhotos[]", photo) 
+                    });
         const response = await fetch(baseUrl + 'products',{method:'POST', body:JSON.stringify(product), headers:{'content-Type':'application/json'}})
         if (!response.ok) {
             return Promise.reject(response.status);
