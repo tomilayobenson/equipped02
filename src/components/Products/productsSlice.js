@@ -4,7 +4,7 @@ import { baseUrl } from "../../data/shared/baseUrl";
 export const fetchProducts = createAsyncThunk(
     'products/fetchProducts',
     async () => {
-        const response= await fetch(baseUrl + 'products');
+        const response = await fetch(baseUrl + 'products');
         if (!response.ok) {
             return Promise.reject('Unable to fetch, status: ' + response.status);
         }
@@ -15,31 +15,47 @@ export const fetchProducts = createAsyncThunk(
 
 export const postProduct = createAsyncThunk(
     'products/postProduct',
-    async (product, {dispatch}) => {
-        const bearer = 'Bearer ' + localStorage.getItem('token');
+    async (product, { dispatch }) => {        
         var formdata = new FormData();
         formdata.append("title", product.postingTitle)
-                    formdata.append("category", product.selectCategory)
-                    // desc: '',
-                    // inputAddress: '',
-                    // inputAddress2: '',
-                    // inputCity: '',
-                    // inputState: 'Choose...',
-                    // inputZip: '',
-                    // pricingSwitches: ['For Rent'],
-                    // enterDay: '',
-                    // enterWeek: '',
-                    // enterMonth: '',
-                    // enterQuantity: '',
-                    // enterValue: '',
-                    // enterMin: '',
-                    // itemPrice: '',
-                    // itemQuantity: '',
-                    // productPhotos: null
-                    product.productPhotos.forEach((photo,idx) => {
-                       formdata.append("productPhotos[]", photo) 
-                    });
-        const response = await fetch(baseUrl + 'products',{method:'POST', body:JSON.stringify(product), headers:{'content-Type':'application/json'}})
+        product.selectCategories.forEach((category, idx) => {
+            formdata.append("category", category.attributes.value.nodeValue)
+        });
+        // if(product.selectCategory !== "Select an Option") {
+        //     formdata.append("category", product.selectCategory)
+        // } //for single select field
+        formdata.append("description", product.desc)
+        formdata.append("address", product.inputAddress)
+        formdata.append("address2", product.inputAddress2)
+        formdata.append("city", product.inputCity)
+        formdata.append("state", product.inputState)
+        formdata.append("zip", product.inputZip)
+        if (product.pricingSwitches.includes("For Rent")) {
+            formdata.append("forRent", true)
+        }
+        if (product.pricingSwitches.includes("For Buy")) {
+            formdata.append("forPurchase", true)
+        }
+        formdata.append("day", product.enterDay)
+        formdata.append("week", product.enterWeek)
+        formdata.append("month", product.enterMonth)
+        formdata.append("rentQuantity", product.enterQuantity)
+        formdata.append("value", product.enterValue)
+        formdata.append("minRentDays", product.enterMin)
+        formdata.append("price", product.itemPrice)
+        formdata.append("purchaseQuantity", product.itemQuantity)
+        product.productPhotos.forEach((photo, idx) => {
+            formdata.append("productPhotos", photo)
+        });
+        // console.log(formdata)
+        // var myHeaders = new Headers();
+        // const bearer = 'Bearer ' + localStorage.getItem('token');
+        // myHeaders.append("Authorization",bearer)
+        var requestOptions = {
+            method: 'POST',
+            body: formdata      
+          };
+        const response = await fetch(baseUrl + 'products', requestOptions)
         if (!response.ok) {
             return Promise.reject(response.status);
         }
@@ -48,16 +64,16 @@ export const postProduct = createAsyncThunk(
     }
 )
 const initialState = {
-    productsArray:[],
-    isLoading:true,
-    errMsg:''
+    productsArray: [],
+    isLoading: true,
+    errMsg: ''
 }
 
 const productsSlice = createSlice({
-    name:'products',
+    name: 'products',
     initialState,
     reducers: {
-        addProduct: (state,action) => {
+        addProduct: (state, action) => {
             const newProduct = {
                 id: state.productsArray.length,
                 ...action.payload
@@ -67,28 +83,28 @@ const productsSlice = createSlice({
     },
     extraReducers: {
         [fetchProducts.pending]: (state) => {
-            state.isLoading =true;
+            state.isLoading = true;
         },
-        [fetchProducts.fulfilled]: (state,action) => {
+        [fetchProducts.fulfilled]: (state, action) => {
             state.isLoading = false;
             state.productsArray = action.payload;
             state.errMsg = ''
         },
-        [fetchProducts.rejected]: (state,action) => {
+        [fetchProducts.rejected]: (state, action) => {
             state.isLoading = false;
             state.errMsg = action.error ? action.error.message : 'Fetch failed';
         },
-        [postProduct.rejected]: (state,action) => {
-            alert (
+        [postProduct.rejected]: (state, action) => {
+            alert(
                 'Your product could not be posted\nError: ' +
-                (action.error ? action.error.message: 'Fetch failed')
+                (action.error ? action.error.message : 'Fetch failed')
             )
         }
     }
 })
 
 export const productsReducer = productsSlice.reducer;
-export const {addProduct} = productsSlice.actions;
+export const { addProduct } = productsSlice.actions;
 
 export const selectAllProducts = (state) => {
     return state.products.productsArray;
