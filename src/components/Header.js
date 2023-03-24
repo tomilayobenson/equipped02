@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Navbar, NavbarBrand, Collapse, NavbarToggler, NavItem, Nav } from "reactstrap";
 import { NavLink } from "react-router-dom";
-// import UserLoginForm from "../components/login/UserLoginForm";
+import UserLoginForm from "../components/login/UserLoginForm";
 // import { logDOM } from "@testing-library/react";
 
 
@@ -43,7 +43,7 @@ const [menuOpen ,setMenuOpen]  = useState(false)
               </NavItem> */}
             </Nav>
           </Collapse>
-              {/* <UserLoginForm /> */}
+              <UserLoginForm />
       </Navbar>
     </div>
   );

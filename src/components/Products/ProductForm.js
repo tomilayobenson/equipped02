@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Container, Button, Col, Label, FormGroup, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 import { validateProductForm } from '../utils/validateProductForm';
 import { useDispatch } from 'react-redux';
-import { postProduct, productsReducer, selectAllProducts } from './productsSlice';
+import { postProduct} from './productsSlice';
 
 export const ProductForm = () => {
     const fileRef = useRef();
