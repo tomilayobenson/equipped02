@@ -48,12 +48,13 @@ export const postProduct = createAsyncThunk(
             formdata.append("productPhotos", photo)
         });
         // console.log(formdata)
-        // var myHeaders = new Headers();
-        // const bearer = 'Bearer ' + localStorage.getItem('token');
-        // myHeaders.append("Authorization",bearer)
+        var myHeaders = new Headers();
+        const bearer = 'Bearer ' + localStorage.getItem('token');
+        myHeaders.append("Authorization",bearer)
         var requestOptions = {
             method: 'POST',
-            body: formdata      
+            body: formdata,
+            headers: myHeaders  
           };
         const response = await fetch(baseUrl + 'products', requestOptions)
         if (!response.ok) {
@@ -79,6 +80,7 @@ const productsSlice = createSlice({
                 ...action.payload
             }
             state.productsArray.push(newProduct);
+            alert("Product has been added")
         }
     },
     extraReducers: {

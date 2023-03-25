@@ -12,11 +12,13 @@ import './App.css';
 import { useDispatch } from 'react-redux';
 import { fetchProducts } from './components/Products/productsSlice';
 import { useEffect } from 'react';
+import { validateLogin } from './components/login/userSlice';
 
 function App() {
   const dispatch = useDispatch();
   useEffect (() => { 
     dispatch(fetchProducts());
+    dispatch(validateLogin())
   },
   [dispatch]
   )
