@@ -88,3 +88,10 @@ span.carousel-control-prev-icon {
 span.carousel-control-next-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
 }
+
+/* styling for products page display */
+
+.bg-trans {
+  /* background-image: linear-gradient(to right, #ff6d2c, #9340ff); */
+  background-color: rgba(0, 0, 0, 0.4);
+}

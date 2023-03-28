@@ -10,7 +10,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import './App.css';
 import { useDispatch } from 'react-redux';
-import { fetchProducts } from './components/Products/productsSlice';
+import { fetchCategories, fetchProducts } from './components/Products/productsSlice';
 import { useEffect } from 'react';
 import { validateLogin } from './components/login/userSlice';
 
@@ -18,7 +18,8 @@ function App() {
   const dispatch = useDispatch();
   useEffect (() => { 
     dispatch(fetchProducts());
-    dispatch(validateLogin())
+    dispatch(fetchCategories());
+    dispatch(validateLogin());
   },
   [dispatch]
   )

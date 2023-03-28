@@ -84,6 +84,8 @@ export const validateLogin = createAsyncThunk(
         if (!data.success) {
             localStorage.removeItem('token');
             dispatch(clearCurrentUser());
+        } else {
+            dispatch(setCurrentUser());
         }
         return data;
     }
@@ -140,10 +142,13 @@ const userSlice = createSlice({
         },
         [userLogout.rejected]: (state) => {
             state.userLoading = false;
-        },
-        [validateLogin.fulfilled]: (state, action)=>{
-            state.currentUser = action.payload.user
         }
+        // ,
+        // [validateLogin.fulfilled]: (state, action)=>{
+        //     if(action.payload.success) {
+        //         state.currentUser = action.payload.user
+        //     }            
+        // }
     }
 })
 

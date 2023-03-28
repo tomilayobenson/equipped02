@@ -2,10 +2,11 @@ import { useState, useRef } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Container, Button, Col, Label, FormGroup, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 import { validateProductForm } from '../utils/validateProductForm';
-import { useDispatch } from 'react-redux';
-import { postProduct} from './productsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { postProduct } from './productsSlice';
 
 export const ProductForm = () => {
+    const categories = useSelector((state) => state.products.categoriesArray)
     const fileRef = useRef();
     const catRef = useRef();
     const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export const ProductForm = () => {
         catRef.current.value = null;
         resetForm();
     };
+    
     const [activeTab, setActiveTab] = useState("1");
     const toggle = tab => {
         if (activeTab !== tab) setActiveTab(tab);
@@ -70,7 +72,7 @@ export const ProductForm = () => {
                                 <option value="641389c7c1d3149a638e96df">Kitchen</option>
                                 <option value="641389c7c1d3149a638e96e0">Bath</option>
                             </Field> */}
-                            <label for="selectCategories">Category</label>
+                            <label htmlFor="selectCategories">Category</label>
                             <select
                                 name="selectCategories"
                                 className="form-control"
@@ -82,11 +84,10 @@ export const ProductForm = () => {
                                 }}
                                 multiple
                             >
-                                <option value="64137fad57a43d9c5671da3b">Furniture</option>
-                                <option value="641389c7c1d3149a638e96dd">Baby Items</option>
-                                <option value="641389c7c1d3149a638e96de">Bags</option>
-                                <option value="641389c7c1d3149a638e96df">Kitchen</option>
-                                <option value="641389c7c1d3149a638e96e0">Bath</option>
+                                {categories.map((category,idx) => {
+                                    return (<option value={category._id} key={idx}>{category.title}</option>);
+                                    }
+                                )}
                             </select>
                             <ErrorMessage name='selectCategories'>
                                 {(msg) => <p className='text-danger'>{msg}</p>}
@@ -206,7 +207,7 @@ export const ProductForm = () => {
                     <input type="file" className="form-control-file" id="attachPhotos" multiple>
                 </div> */}
                         <FormGroup>
-                            <label for="productPhotos">Product Photos</label>
+                            <label htmlFor="productPhotos">Product Photos</label>
                             <input
                                 name="productPhotos"
                                 type="file"

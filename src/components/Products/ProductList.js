@@ -1,27 +1,25 @@
-import { Products } from '../../data/shared/PRODUCTS'
 import {Col, Row} from 'reactstrap'
 import ProductsCard from "./ProductsCard";
+import { useSelector } from 'react-redux';
 
 
 
 
 const ProductList = () => {
+  const products = useSelector((state)=>state.products.productsArray)
   return (
        
       <Row className="ms-auto mt-5">
           {
-            Products.map((product)=>{
+            products.map((product)=>{
                   return (
                     <Col sm={4}  key={product.id}>
-                           <ProductsCard  product={product}/>
-                          
+                           <ProductsCard  product={product}/>                          
                     </Col>
-
                   )
      })
           }
-      </Row>
-   
+      </Row>   
   )
 }
 

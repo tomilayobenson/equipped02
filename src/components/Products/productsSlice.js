@@ -64,10 +64,25 @@ export const postProduct = createAsyncThunk(
         dispatch(addProduct(data));
     }
 )
+
+export const fetchCategories = createAsyncThunk(
+    'products/fetchCategories',
+    async () => {
+        const response = await fetch(baseUrl + 'categories');
+        if (!response.ok) {
+            return Promise.reject('Unable to fetch, status: ' + response.status);
+        }
+        const data = response.json();
+        return data;
+    }
+)
 const initialState = {
     productsArray: [],
     isLoading: true,
-    errMsg: ''
+    errMsg: '',
+    categoriesArray:[],
+    categoriesLoading: true,
+    catErrMsg:''
 }
 
 const productsSlice = createSlice({
@@ -101,6 +116,18 @@ const productsSlice = createSlice({
                 'Your product could not be posted\nError: ' +
                 (action.error ? action.error.message : 'Fetch failed')
             )
+        },
+        [fetchCategories.pending]: (state) => {
+            state.categoriesLoading = true;
+        },
+        [fetchCategories.fulfilled]: (state, action) => {
+            state.categoriesLoading = false;
+            state.categoriesArray = action.payload;
+            state.catErrMsg = ''
+        },
+        [fetchCategories.rejected]: (state, action) => {
+            state.categoriesLoading = false;
+            state.catErrMsg = action.error ? action.error.message : 'Category Fetch failed';
         }
     }
 })
