@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+// import FacebookLogin from 'react-facebook-login';
 // import { setCurrentUser, selectCurrentUser } from './userSlice';
 import { userLogin, userSignup, userLogout } from './userSlice';
 import {
@@ -25,17 +26,48 @@ const UserLoginForm = () => {
     const currentUser = useSelector((state) => state.user.currentUser)
     const dispatch = useDispatch()
 
+    // useEffect(() => {
+    //     window.fbAsyncInit = function () {
+    //         window.FB.init({
+    //             appId: '780189826857122',
+    //             cookie: true,
+    //             xfbml: true,
+    //             version: 'v13.0'
+    //         });
+    //     };
+
+    //     // Load the Facebook SDK asynchronously
+    //     (function (d, s, id) {
+    //         var js, fjs = d.getElementsByTagName(s)[0];
+    //         if (d.getElementById(id)) return;
+    //         js = d.createElement(s); js.id = id;
+    //         js.src = "https://connect.facebook.net/en_US/sdk.js";
+    //         fjs.parentNode.insertBefore(js, fjs);
+    //     }(document, 'script', 'facebook-jssdk'));
+    // }, []);
+
+    // const handleFacebookResponse = (response) => {
+    //     if (response.authResponse) {
+    //         // User has successfully authenticated with Facebook
+    //         // Redirect to the server's /auth/facebook route to handle authentication
+    //         window.location.href = '/users/auth/facebook';
+    //     } else {
+    //         console.log('User cancelled login or did not fully authorize.');
+    //     }
+    // }
+
     const handleLogin = (values) => {
         const user = {
             username: values.username,
             password: values.password
         }
-        console.log(JSON.stringify(user))
+        // console.log(JSON.stringify(user))
         dispatch(userLogin(user))
         setLoginModalOpen(false)
     }
 
     const handleSignup = (values) => {
+        // console.log('i have been fired"')
         const user = {
             username: values.username,
             password: values.password,
@@ -48,6 +80,7 @@ const UserLoginForm = () => {
             state: values.state,
             zip: values.zip
         }
+        // console.log(JSON.stringify(user))
         dispatch(userSignup(user))
         setSignupModalOpen(false)
     }
@@ -68,7 +101,7 @@ const UserLoginForm = () => {
                                 }}
                             >
                                 <i className='fa fa-sign-out fa-lg' /> Logout
-                            </Button>                            
+                            </Button>
                         </span>
                         <span className='ml-auto'><UserAvatar /></span>
                     </>
@@ -87,6 +120,14 @@ const UserLoginForm = () => {
                         Login
                     </ModalHeader>
                     <ModalBody>
+                        {/* <FacebookLogin
+                            appId="780189826857122"
+                            fields="name,email,picture,id,displayName,gender"
+                            callback={handleFacebookResponse}
+                            cssClass="my-facebook-button-class"
+                            icon="fa-facebook"
+                        />
+                        <h3>OR</h3> */}
                         <Formik
 
                             initialValues={{
@@ -170,7 +211,7 @@ const UserLoginForm = () => {
                                         </ErrorMessage>
                                     </Col>
                                     <Col md={6}>
-                                        <Label htmlFor='password'>password</Label>
+                                        <Label htmlFor='password'>Password</Label>
                                         <Field id='password' name='password' placeholder='Password' className='form-control' />
                                         <ErrorMessage name='password' >
                                             {(msg) => <p className='text-danger'> {msg}</p>}
@@ -237,7 +278,7 @@ const UserLoginForm = () => {
                                     </Col>
                                 </FormGroup>
                                 <div className="text-center">
-                                    <Button type='submit' color='primary' >Signup</Button>
+                                    <Button type='submit' color='primary'>Signup</Button>
                                 </div>
 
                             </Form>

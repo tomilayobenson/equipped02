@@ -47,7 +47,7 @@ export const postProduct = createAsyncThunk(
         product.productPhotos.forEach((photo, idx) => {
             formdata.append("productPhotos", photo)
         });
-        // console.log(formdata)
+        console.log(formdata)
         var myHeaders = new Headers();
         const bearer = 'Bearer ' + localStorage.getItem('token');
         myHeaders.append("Authorization",bearer)
@@ -105,6 +105,7 @@ const productsSlice = createSlice({
         [fetchProducts.fulfilled]: (state, action) => {
             state.isLoading = false;
             state.productsArray = action.payload;
+            console.log(action.payload)
             state.errMsg = ''
         },
         [fetchProducts.rejected]: (state, action) => {

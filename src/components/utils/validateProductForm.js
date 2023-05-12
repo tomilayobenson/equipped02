@@ -24,8 +24,8 @@ export const validateProductForm = (values) => {
   if (!values.pricingSwitches.length) {
     errors.pricingSwitches = "Product must be enabled for either rent or purchase";
   }
-  if (!values.productPhotos || !values.productPhotos.length) {
-    errors.productPhotos = "Required";
-  }
+  // if (!values.productPhotos || !values.productPhotos.length) {
+  //   errors.productPhotos = "Required";
+  // }
   return errors
 }

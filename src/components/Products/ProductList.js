@@ -13,7 +13,7 @@ const ProductList = () => {
           {
             products.map((product)=>{
                   return (
-                    <Col sm={6} lg={4}  key={product.id}>
+                    <Col sm={6} lg={4}  key={product._id}>
                            <ProductsCard  product={product}/>                          
                     </Col>
                   )

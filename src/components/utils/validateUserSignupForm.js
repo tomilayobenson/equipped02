@@ -24,9 +24,6 @@ export const validateUserSignupForm = (values) => {
     if (!values.address) {
         errors.address = "Required";
     }
-    if (!values.address2) {
-        errors.address2 = "Required";
-    }
     if (!values.city) {
         errors.city = "Required";
     }

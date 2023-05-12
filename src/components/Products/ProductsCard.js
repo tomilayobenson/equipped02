@@ -1,10 +1,13 @@
 import { Card, CardImg, CardImgOverlay, CardTitle, CardText, CardLink, CardBody, Button } from "reactstrap";
 import { imageUrl } from "../../data/shared/baseUrl";
+import { useNavigate } from "react-router-dom";
+
 //import { Link } from "react-router-dom";
 
 
 const ProductsCard = ({ product }) => {
-  const { productPhotos, title, forRent, forPurchase, description } = product
+  const { productPhotos, title, forRent, forPurchase, description } = product;
+  const navigate = useNavigate()
 
   return (
 
@@ -17,10 +20,10 @@ const ProductsCard = ({ product }) => {
           {description}
         </CardText>
         <div>
-          {forRent && (<Button color="warning">
+          {forRent && (<Button color="warning" onClick={()=> navigate(`/products/${product._id}`)}>
             Rent
           </Button>)}{" "}
-          {forPurchase && (<Button color="warning">
+          {forPurchase && (<Button color="warning" onClick={()=> navigate(`/products/${product._id}`)}>
             Buy
           </Button>)}
         </div>
